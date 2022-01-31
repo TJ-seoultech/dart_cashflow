@@ -24,6 +24,7 @@ corp_dict={
     '연료탱크':[]
 }
 category=corp_dict.keys()
+unidentified_corp=list()
 
 
 class cashflow_corp():
@@ -45,9 +46,17 @@ radiator.get_element_code()
 for parts in category:
     # print(corp_dict[parts])
     for company in corp_dict[parts]:
+        # dart 리스트에 없는 기업들에 대해 먼저 클래스 선언후, 아무 검증과정없이 show_element_name과 get_element_code를
+        # 해버려서 에러가 발생한다. 이에 대한 대책으로 클래스 선언 전에 미리 리스트 내에 있는 지 검증하기로 결정
+        # 그 수단으로 try&except문을 작성했는데, 작성법을 모른다.
+        try:
+            corp_list.find_by_corp_name(company)
+        except:
+            unidentified_corp.append(company)
         company=cashflow_corp(company)
         company.show_element_name()
         company.get_element_code()
+#       이게 맞나 모르겠다.
 
 # # 2012년부터 연간 연결재무제표 불러오기
 # fs = samsung.extract_fs(bgn_de='20120101')
