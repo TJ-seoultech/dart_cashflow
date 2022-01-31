@@ -51,12 +51,17 @@ for parts in category:
         # 그 수단으로 try&except문을 작성했는데, 작성법을 모른다.
         try:
             corp_list.find_by_corp_name(company)
+            company = cashflow_corp(company)
+            company.show_element_name()
+            company.get_element_code()
         except:
             unidentified_corp.append(company)
-        company=cashflow_corp(company)
-        company.show_element_name()
-        company.get_element_code()
 #       이게 맞나 모르겠다.
+#       try 수행중에 오류가 발생하면, 자동으로 except구문으로 넘어가니, 리스트 내에 있는 기업들에 대해 실행하고 싶은 명령어들을
+#       try 문구안에 넣는게 맞다.
+#       except 문구 뒤에는 오류가 발생했을때만 실행할 명령어를 넣는게 맞다. 아까의 경우, try except 구문을 통해 검증은 했는데,
+#       검증이 끝나고 다시 조사 기업 전부 다에 대해서 그대로 dart_fss 함수를 적용하니 오류는 그대로 난거다.
+
 
 # # 2012년부터 연간 연결재무제표 불러오기
 # fs = samsung.extract_fs(bgn_de='20120101')
