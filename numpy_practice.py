@@ -24,6 +24,13 @@ d=np.array(list4)
 array3_1=np.array(range(8)).reshape((8,))
 array3_1=(array3_1+1)*10
 print(array3_1)
+print(array3_1 % 3 == 0)
+print(array3_1 & 3 == 0)
+array3_1 = array3_1[array3_1 & 3 == 0]
+for i in list(range(10)):
+    print(bin(i), bin(3), i&3==0)
+    # print(3==0)
+print(array3_1)
 # 연습문제3-2
 array3_2 = np.array([[ 0,  1,  2,  3,  4],
             [ 5,  6,  7,  8,  9],
@@ -34,10 +41,25 @@ an3=array3_2[1,1:3]
 an4=array3_2[1:,2]
 an5=array3_2[:2,0:2]
 print([an1,an2,an3,an4,an5])
+# 연습문제3-3
+array3_3 = np.array(range(40)).reshape((5,8))
+print(type(array3_3%3==0))
+print(array3_3%4==1)
+conditional1 = array3_3%3==0
+conditional2 = array3_3%4==1
+print(conditional2&conditional1)
+condition_complex=(array3_3%3==0) & (array3_3&4==1)
+
+an3_1=array3_3[array3_3%3==0]
+an3_2=array3_3[array3_3%4==1]
+an3_3=array3_3[(array3_3%3==0) & (array3_3&4==1)]
+# print(an3_1)
+# print(an3_2)
+print(an3_3)
 
 # 내가 세울 데이터 프레임은, 18,19,20,21 년도 별로 나뉘며, 첫번째 차원 안에는 코드, 매출액, 영업이익, EBIT배수가 적힌다.
 Data=np.zeros(shape=(4,4),dtype=int)
-print(Data)
+# print(Data)
 # numpy array에 데이터 입력법
 Data[(0,0)]=4
-print(Data)
+# print(Data)
